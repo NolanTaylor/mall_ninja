@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://64rhq850fupr"]
+
+[ext_resource type="PackedScene" uid="uid://b3bxu76olx00s" path="res://Game/cutscene.tscn" id="1_38lpt"]
+[ext_resource type="Script" path="res://Game/Cutscenes/intro.gd" id="2_f02eh"]
+[ext_resource type="PackedScene" uid="uid://duubm3p1gqm2t" path="res://Game/player.tscn" id="3_a2sjx"]
+[ext_resource type="Texture2D" uid="uid://cooeavoq4sh7r" path="res://Assets/Environments/mall_entrance.png" id="3_fkuu2"]
+[ext_resource type="Texture2D" uid="uid://cvdkemsre7od8" path="res://Assets/Environments/mall_exterior.png" id="3_xp2nx"]
+[ext_resource type="Texture2D" uid="uid://fhw7g1aspvx4" path="res://Assets/Environments/mall_exterior_ethan.png" id="4_pl4gj"]
+[ext_resource type="Texture2D" uid="uid://dos1fmhcexeps" path="res://Assets/Environments/mall_entrance_signs.png" id="4_s7n1u"]
+[ext_resource type="PackedScene" uid="uid://byuqufoi4hmw1" path="res://Game/Bosses/paul_ball_maul_call.tscn" id="7_fnmq3"]
+
+[node name="root_intro" instance=ExtResource("1_38lpt")]
+script = ExtResource("2_f02eh")
+
+[node name="white_rect" type="ColorRect" parent="." index="0"]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="mall_entrance" type="Sprite2D" parent="." index="1"]
+visible = false
+texture = ExtResource("3_fkuu2")
+centered = false
+
+[node name="mall_entrance_signs" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("4_s7n1u")
+centered = false
+
+[node name="mall_exterior" type="Sprite2D" parent="." index="3"]
+visible = false
+position = Vector2(240, 0)
+texture = ExtResource("3_xp2nx")
+centered = false
+
+[node name="mall_exterior_ethan" type="Sprite2D" parent="." index="4"]
+visible = false
+position = Vector2(-160, 0)
+texture = ExtResource("4_pl4gj")
+centered = false
+
+[node name="player" parent="." index="5" instance=ExtResource("3_a2sjx")]
+visible = false
+position = Vector2(563, 403)
+cutscene_mode = true
+
+[node name="paul" parent="." index="6" instance=ExtResource("7_fnmq3")]
+visible = false
+position = Vector2(900, 331)
+cutscene_mode = true
+
+[node name="fade_black" type="ColorRect" parent="." index="7"]
+visible = false
+offset_right = 1281.0
+offset_bottom = 723.0
+color = Color(0, 0, 0, 1)

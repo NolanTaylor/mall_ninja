@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bqbqml6k2tpdy"]
+
+[ext_resource type="FontFile" uid="uid://dtlptufyfk5u4" path="res://Assets/Fonts/Girls Have Many Secrets.ttf" id="1_5lbjv"]
+[ext_resource type="FontFile" uid="uid://buxxqdc3i2kp2" path="res://Assets/Fonts/chocolate_covered_raindrops_bold.ttf" id="2_4ihgw"]
+
+[resource]
+Control/colors/default_color = Color(0, 0, 0, 1)
+Control/colors/font_color = Color(0, 0, 0, 1)
+Control/font_sizes/font_size = 48
+Control/font_sizes/normal_font_size = 64
+Control/fonts/font = ExtResource("1_5lbjv")
+Control/fonts/normal_font = ExtResource("2_4ihgw")

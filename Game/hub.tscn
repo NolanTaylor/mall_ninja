@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d8k4753tpiwo"]
+
+[ext_resource type="Script" path="res://Game/hub.gd" id="1_b8pq6"]
+[ext_resource type="PackedScene" uid="uid://duubm3p1gqm2t" path="res://Game/player.tscn" id="2_j7g8s"]
+
+[node name="root_hub" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_b8pq6")
+
+[node name="obstacles" type="StaticBody2D" parent="."]
+
+[node name="interactions" type="Node" parent="."]
+
+[node name="camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+position_smoothing_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_j7g8s")]
+z_index = 1
+position = Vector2(592, 662)

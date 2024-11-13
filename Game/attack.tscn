@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3gvudbm2b1"]
+
+[ext_resource type="Script" path="res://Game/attack.gd" id="1_xdr2l"]
+
+[node name="root_attack" type="Area2D"]
+script = ExtResource("1_xdr2l")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

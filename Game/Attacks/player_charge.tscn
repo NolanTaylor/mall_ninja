@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7y1j8bxhxwff"]
+
+[ext_resource type="PackedScene" uid="uid://dk3gvudbm2b1" path="res://Game/attack.tscn" id="1_nh7xp"]
+[ext_resource type="Texture2D" uid="uid://01q41vvlo4h0" path="res://Assets/Attacks/ChargeArrowPieces/charge_arrow_base.png" id="2_78606"]
+[ext_resource type="Script" path="res://Game/Attacks/player_charge.gd" id="2_vk4bp"]
+[ext_resource type="Texture2D" uid="uid://dsk25exycunps" path="res://Assets/Attacks/ChargeArrowPieces/charge_arrow_tip.png" id="4_a4q7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjhfg"]
+size = Vector2(39, 29)
+
+[node name="root_player_charge" instance=ExtResource("1_nh7xp")]
+script = ExtResource("2_vk4bp")
+charge_rate = 1.4
+max_charge = 1600
+
+[node name="charge_arrow" type="Node2D" parent="." index="1"]
+scale = Vector2(0.15, 0.15)
+
+[node name="base" type="Sprite2D" parent="charge_arrow" index="0"]
+unique_name_in_owner = true
+position = Vector2(-140, -440)
+texture = ExtResource("2_78606")
+centered = false
+region_enabled = true
+region_rect = Rect2(228.248, 152, 276.752, 275.011)
+
+[node name="shaft" type="Node2D" parent="charge_arrow" index="1"]
+unique_name_in_owner = true
+position = Vector2(-121.255, -280)
+metadata/_edit_group_ = true
+
+[node name="left" type="ColorRect" parent="charge_arrow/shaft" index="0"]
+offset_left = -13.3334
+offset_right = -0.333359
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="middle" type="ColorRect" parent="charge_arrow/shaft" index="1"]
+offset_right = 238.96
+offset_bottom = 40.0
+
+[node name="right" type="ColorRect" parent="charge_arrow/shaft" index="2"]
+offset_left = 239.335
+offset_right = 251.63
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="tip" type="Sprite2D" parent="charge_arrow" index="2"]
+unique_name_in_owner = true
+position = Vector2(-137.348, -426.667)
+texture = ExtResource("4_a4q7l")
+centered = false
+region_enabled = true
+region_rect = Rect2(233.193, 256.637, 267.715, 160.809)
+
+[node name="collision_shape" type="CollisionShape2D" parent="." index="2"]
+visible = false
+position = Vector2(-0.5, -48.5)
+shape = SubResource("RectangleShape2D_xjhfg")

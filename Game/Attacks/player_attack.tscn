@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvst8hdwn65vi"]
+
+[ext_resource type="PackedScene" uid="uid://dk3gvudbm2b1" path="res://Game/attack.tscn" id="1_6hotd"]
+[ext_resource type="Script" path="res://Game/Attacks/player_attack.gd" id="2_30weu"]
+[ext_resource type="Texture2D" uid="uid://b2or1i7hlmyrn" path="res://Assets/Attacks/sword_swing.png" id="2_l27ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shcj7"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvt3y"]
+atlas = ExtResource("2_l27ew")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj7lk"]
+atlas = ExtResource("2_l27ew")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2f3c"]
+atlas = ExtResource("2_l27ew")
+region = Rect2(0, 720, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghxfo"]
+atlas = ExtResource("2_l27ew")
+region = Rect2(720, 720, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ydk6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvt3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj7lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2f3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghxfo")
+}],
+"loop": true,
+"name": &"swing",
+"speed": 16.0
+}]
+
+[node name="root_player_attack" instance=ExtResource("1_6hotd")]
+script = ExtResource("2_30weu")
+distance = Vector2(64, 80)
+
+[node name="collision_shape" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_shcj7")
+
+[node name="sprite" parent="." index="1"]
+position = Vector2(-70, -78)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4ydk6")
+animation = &"swing"
+centered = false
+metadata/_edit_lock_ = true

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1tbtfe2kwnic"]
+
+[ext_resource type="PackedScene" uid="uid://dk3gvudbm2b1" path="res://Game/attack.tscn" id="1_un6tg"]
+[ext_resource type="Script" path="res://Game/Attacks/player_dash.gd" id="2_amhy1"]
+
+[node name="root_player_dash" instance=ExtResource("1_un6tg")]
+script = ExtResource("2_amhy1")

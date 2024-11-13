@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://crkve3j7wl8a7"]
+
+[ext_resource type="PackedScene" uid="uid://dk3gvudbm2b1" path="res://Game/attack.tscn" id="1_cdi8s"]
+[ext_resource type="Script" path="res://Game/Attacks/bullet.gd" id="2_uvlml"]
+[ext_resource type="Texture2D" uid="uid://cr47i6wc6mfyw" path="res://icon.svg" id="3_k05u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f38q1"]
+atlas = ExtResource("3_k05u2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_da5ka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f38q1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14y0y"]
+size = Vector2(12, 12)
+
+[node name="root_bullet" instance=ExtResource("1_cdi8s")]
+script = ExtResource("2_uvlml")
+hits_player = true
+destroy_on_hit = true
+destroy_after_time = 2.4
+
+[node name="sprite" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_da5ka")
+
+[node name="collision_shape" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_14y0y")

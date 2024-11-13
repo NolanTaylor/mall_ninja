@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://em1m35uid20i"]
+
+[ext_resource type="Script" path="res://UI/dialogue.gd" id="1_kfd4a"]
+[ext_resource type="Texture2D" uid="uid://b58d1x4g5njp6" path="res://Assets/UI/dialog_box.png" id="1_rdgm6"]
+[ext_resource type="Theme" uid="uid://bqbqml6k2tpdy" path="res://UI/base_ui_theme.tres" id="3_d8bmg"]
+[ext_resource type="Texture2D" uid="uid://c36hpoqgg7pjr" path="res://Assets/UI/choice_button_top.png" id="4_tah5s"]
+[ext_resource type="Texture2D" uid="uid://x5lvxn4825kt" path="res://Assets/UI/choice_button_bottom.png" id="5_xsclt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaard"]
+atlas = ExtResource("1_rdgm6")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbd8f"]
+atlas = ExtResource("1_rdgm6")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5htlo"]
+atlas = ExtResource("1_rdgm6")
+region = Rect2(0, 720, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkqvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaard")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbd8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5htlo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="root_dialogue" type="Node2D"]
+script = ExtResource("1_kfd4a")
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="modulate" type="CanvasModulate" parent="canvas_layer"]
+
+[node name="portrait_left" type="Sprite2D" parent="canvas_layer"]
+centered = false
+
+[node name="portrait_right" type="Sprite2D" parent="canvas_layer"]
+centered = false
+
+[node name="dialog_box" type="AnimatedSprite2D" parent="canvas_layer"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_bkqvf")
+centered = false
+
+[node name="choice_top" type="Sprite2D" parent="canvas_layer"]
+visible = false
+position = Vector2(288, 122)
+rotation = -0.317344
+texture = ExtResource("4_tah5s")
+centered = false
+
+[node name="button" type="Button" parent="canvas_layer/choice_top"]
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 328.0
+offset_bottom = 80.0
+flat = true
+
+[node name="label" type="RichTextLabel" parent="canvas_layer/choice_top"]
+offset_left = 71.6228
+offset_top = 35.1023
+offset_right = 313.623
+offset_bottom = 75.1023
+mouse_filter = 2
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "reach for his service weapon"
+fit_content = true
+
+[node name="choice_bottom" type="Sprite2D" parent="canvas_layer"]
+visible = false
+position = Vector2(334, 172)
+rotation = 0.112167
+texture = ExtResource("5_xsclt")
+centered = false
+
+[node name="button" type="Button" parent="canvas_layer/choice_bottom"]
+offset_left = 22.0
+offset_top = 12.0
+offset_right = 328.0
+offset_bottom = 82.0
+rotation = 0.0698132
+flat = true
+
+[node name="label" type="RichTextLabel" parent="canvas_layer/choice_bottom"]
+offset_left = 32.0
+offset_top = 35.0
+offset_right = 310.0
+offset_bottom = 72.0
+rotation = 0.0349066
+mouse_filter = 2
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "reach for his service weapon"
+fit_content = true
+
+[node name="label" type="RichTextLabel" parent="canvas_layer"]
+visible = false
+offset_left = 52.0
+offset_top = 494.0
+offset_right = 1213.0
+offset_bottom = 655.0
+theme = ExtResource("3_d8bmg")
+bbcode_enabled = true
+text = "text lmao"

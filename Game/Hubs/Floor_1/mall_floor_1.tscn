@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://do6u4wbwj5qai"]
+
+[ext_resource type="PackedScene" uid="uid://d8k4753tpiwo" path="res://Game/hub.tscn" id="1_2p2et"]
+[ext_resource type="Texture2D" uid="uid://bf38muu4w6pwj" path="res://Assets/Environments/mall_floor_one.png" id="1_8ixow"]
+[ext_resource type="Script" path="res://Game/Hubs/Floor_1/mall_floor_1.gd" id="2_w0xhi"]
+[ext_resource type="Texture2D" uid="uid://dsrdjbclxgrck" path="res://Assets/Environments/fountain.png" id="3_uj1ph"]
+[ext_resource type="PackedScene" uid="uid://dg5qhjf35hbdy" path="res://Game/interaction.tscn" id="5_nfm1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bh1p"]
+atlas = ExtResource("3_uj1ph")
+region = Rect2(0, 0, 492, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0n8s"]
+atlas = ExtResource("3_uj1ph")
+region = Rect2(492, 0, 492, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60rnd"]
+atlas = ExtResource("3_uj1ph")
+region = Rect2(0, 412, 492, 412)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtouq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bh1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0n8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60rnd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vkgt"]
+size = Vector2(287.5, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23yo4"]
+size = Vector2(209, 1535)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xoi5"]
+size = Vector2(201, 1551)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tva3u"]
+size = Vector2(416, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ey08"]
+size = Vector2(413, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohh2n"]
+size = Vector2(28, 72)
+
+[node name="root_mall_floor_1" instance=ExtResource("1_2p2et")]
+script = ExtResource("2_w0xhi")
+
+[node name="bg" type="Sprite2D" parent="." index="0"]
+z_index = -1
+position = Vector2(0, -1)
+texture = ExtResource("1_8ixow")
+centered = false
+offset = Vector2(0, -1440)
+
+[node name="fountain" type="AnimatedSprite2D" parent="." index="1"]
+z_index = 1
+position = Vector2(629, -162)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_vtouq")
+centered = false
+offset = Vector2(-236.47, -365.055)
+
+[node name="static_body" type="StaticBody2D" parent="fountain" index="0"]
+
+[node name="collision_shape" type="CollisionShape2D" parent="fountain/static_body" index="0"]
+position = Vector2(-8.75, -25)
+shape = SubResource("RectangleShape2D_1vkgt")
+
+[node name="collision_shape_1" type="CollisionShape2D" parent="obstacles" index="0"]
+position = Vector2(104.5, -47.5)
+shape = SubResource("RectangleShape2D_23yo4")
+
+[node name="collision_shape_2" type="CollisionShape2D" parent="obstacles" index="1"]
+position = Vector2(1179.5, -55.5)
+shape = SubResource("RectangleShape2D_7xoi5")
+
+[node name="collision_shape_3" type="CollisionShape2D" parent="obstacles" index="2"]
+position = Vector2(205, -1243.5)
+shape = SubResource("RectangleShape2D_tva3u")
+
+[node name="collision_shape_4" type="CollisionShape2D" parent="obstacles" index="3"]
+position = Vector2(1073.5, -1243.5)
+shape = SubResource("RectangleShape2D_1ey08")
+
+[node name="cinnabon_door" parent="interactions" index="0" instance=ExtResource("5_nfm1o")]
+position = Vector2(1057, 288)
+
+[node name="collision_shape" parent="interactions/cinnabon_door" index="0"]
+position = Vector2(6, 8)
+shape = SubResource("RectangleShape2D_ohh2n")
+
+[node name="interact_prompt" parent="interactions/cinnabon_door" index="1"]
+position = Vector2(-42, -178)
+
+[node name="camera" parent="." index="4"]
+limit_top = -1440
+
+[editable path="interactions/cinnabon_door"]

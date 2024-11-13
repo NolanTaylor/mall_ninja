@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnrlfp1a3br81"]
+
+[ext_resource type="PackedScene" uid="uid://ywlqsen54xdi" path="res://Game/level.tscn" id="1_48ho3"]
+[ext_resource type="PackedScene" uid="uid://byuqufoi4hmw1" path="res://Game/Bosses/paul_ball_maul_call.tscn" id="2_vmwem"]
+
+[node name="root_test_level" instance=ExtResource("1_48ho3")]
+
+[node name="paul" parent="enemies" index="0" instance=ExtResource("2_vmwem")]
+position = Vector2(225, 184)

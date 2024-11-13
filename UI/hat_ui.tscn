@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtrdsojkbadba"]
+
+[ext_resource type="Texture2D" uid="uid://p1bxskmj41q1" path="res://Assets/UI/hat.png" id="1_sdtms"]
+[ext_resource type="Script" path="res://UI/hat_ui.gd" id="1_uu3rf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31suu"]
+atlas = ExtResource("1_sdtms")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amo8h"]
+atlas = ExtResource("1_sdtms")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8e5e"]
+atlas = ExtResource("1_sdtms")
+region = Rect2(0, 720, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8uau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31suu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amo8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8e5e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="root_hat_ui" type="Control"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 72.0
+offset_bottom = 72.0
+size_flags_horizontal = 4
+script = ExtResource("1_uu3rf")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_g8uau")
+centered = false

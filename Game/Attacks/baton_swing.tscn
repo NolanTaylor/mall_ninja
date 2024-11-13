@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlulffhcqdgat"]
+
+[ext_resource type="PackedScene" uid="uid://dk3gvudbm2b1" path="res://Game/attack.tscn" id="1_f2ci0"]
+[ext_resource type="Script" path="res://Game/Attacks/baton_swing.gd" id="2_e5aeu"]
+[ext_resource type="Texture2D" uid="uid://bn52t4864jbj" path="res://Assets/Attacks/baton_swing.png" id="2_rpm4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdq5i"]
+atlas = ExtResource("2_rpm4x")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw4q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdq5i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndyrw"]
+size = Vector2(99, 72)
+
+[node name="root_baton_swing" instance=ExtResource("1_f2ci0")]
+script = ExtResource("2_e5aeu")
+distance = Vector2(64, 80)
+hits_player = true
+
+[node name="sprite" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_bw4q0")
+offset = Vector2(0, -48.905)
+
+[node name="collision_shape" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(1.5, 3)
+shape = SubResource("RectangleShape2D_ndyrw")

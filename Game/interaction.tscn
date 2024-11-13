@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dg5qhjf35hbdy"]
+
+[ext_resource type="Script" path="res://Game/interaction.gd" id="1_6lebu"]
+[ext_resource type="Texture2D" uid="uid://c1leq0k0dssps" path="res://Assets/UI/interact_prompt.png" id="2_uma8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bri2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4pj"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(0, 132, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13yb3"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(132, 132, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgohu"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(264, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovfgq"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvhec"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(132, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcujo"]
+atlas = ExtResource("2_uma8a")
+region = Rect2(264, 0, 132, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjyk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13yb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgohu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovfgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvhec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcujo")
+}],
+"loop": false,
+"name": &"prompt",
+"speed": 12.0
+}]
+
+[node name="root_interaction" type="Area2D"]
+script = ExtResource("1_6lebu")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0bri2")
+
+[node name="interact_prompt" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_kjyk8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
