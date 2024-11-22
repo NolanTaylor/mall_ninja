@@ -11,7 +11,7 @@ size = Vector2(39, 29)
 [node name="root_player_charge" instance=ExtResource("1_nh7xp")]
 script = ExtResource("2_vk4bp")
 charge_rate = 1.4
-max_charge = 1600
+max_charge = 3200
 
 [node name="charge_arrow" type="Node2D" parent="." index="1"]
 scale = Vector2(0.15, 0.15)

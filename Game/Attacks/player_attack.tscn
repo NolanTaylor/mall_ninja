@@ -51,6 +51,7 @@ distance = Vector2(64, 80)
 shape = SubResource("RectangleShape2D_shcj7")
 
 [node name="sprite" parent="." index="1"]
+visible = false
 position = Vector2(-70, -78)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_4ydk6")

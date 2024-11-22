@@ -1,7 +1,7 @@
 extends "res://Game/attack.gd"
 
 @export var charge_rate : float = 1.4
-@export var max_charge : int = 1600
+@export var max_charge : int = 3200
 
 @onready var tip_starting_y : int = %tip.position.y
 

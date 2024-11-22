@@ -3,7 +3,10 @@ extends "res://Game/boss.gd"
 @onready var bullet : PackedScene = preload("res://Game/Attacks/bullet.tscn")
 
 enum State {
-	
+	IDLE,
+	CHARGE,
+	SHOOT,
+	BATON,
 }
 
 enum Wheels {
@@ -27,7 +30,7 @@ func _process(delta: float) -> void:
 		
 	if moving_baton:
 		global_position = position.move_toward(player.get_true_position(), 400 * delta)
-		if position.distance_to(player.get_true_position()) < 48:
+		if position.distance_to(player.get_true_position()) < 72:
 			moving_baton = false
 			emit_signal("reached_player")
 			
@@ -35,6 +38,7 @@ func run_idle() -> void:
 	if cutscene_mode:
 		return
 		
+	state = State.IDLE
 	velocity = Vector2.ZERO
 	$sprite.play("idle")
 	
@@ -51,6 +55,8 @@ func run_idle() -> void:
 			run_idle()
 			
 func run_charge() -> void:
+	state = State.CHARGE
+	
 	for i in range(2):
 		for dir in Globals.DIRECTIONS:
 			run_to(global_position + dir * 48, Wheels.NORMAL)
@@ -76,6 +82,8 @@ func run_charge() -> void:
 	run_idle()
 	
 func run_shoot() -> void:
+	state = State.SHOOT
+	
 	$sprite.play("pull_gun")
 	
 	await $sprite.animation_finished
@@ -101,6 +109,8 @@ func run_shoot() -> void:
 	run_idle()
 	
 func run_baton() -> void:
+	state = State.BATON
+	
 	$sprite.play("pull_baton")
 	
 	await $sprite.animation_finished
@@ -147,3 +157,6 @@ func run_to(pos : Vector2, wheels : int = Wheels.NORMAL) -> void:
 			$sprite.play("run_{0}se".format([mod]))
 		Vector2(0, 1):
 			$sprite.play("run_{0}s".format([mod]))
+			
+func _on_collision(collider : KinematicCollision2D) -> void:
+	pass

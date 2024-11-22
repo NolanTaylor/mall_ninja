@@ -45,8 +45,11 @@ func cancel() -> void:
 	hide()
 	
 func collision(body : Node) -> void:
+	if !visible:
+		return
+		
 	if body.has_method("deal_damage"):
-		body.deal_damage(damage)
+		body.deal_damage()
 		
 	if destroy_on_hit:
 		destroy()

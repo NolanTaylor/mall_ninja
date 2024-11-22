@@ -525,3 +525,5 @@ animation = &"pull_gun"
 [node name="baton" parent="." index="2" instance=ExtResource("4_nmlfi")]
 visible = false
 distance = Vector2(72, 96)
+
+[connection signal="collision" from="." to="." method="_on_collision"]
